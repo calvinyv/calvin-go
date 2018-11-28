@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package calvin.grpc;
+
+import "google/api/annotations.proto";
+
+message StringMessage {
+  string value = 1;
+}
+
+service TestService {
+
+rpc Echo(StringMessage) returns (StringMessage) {
+    option (google.api.http) = {
+      post: "/v1/test/echo"
+      body: "*"
+    };
+  }
+}
